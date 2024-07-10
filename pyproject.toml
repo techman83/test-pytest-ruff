@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hello"
+version = "0.0.1"
+dependencies = ["pytest", "pytest-ruff"]
+
+[project.scripts]
+ruff-hello = "hello.ruff:world"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+addopts = "-p no:cacheprovider --ruff"
+
+[tool.ruff]
+preview = true
+
+[tool.ruff.lint]
+select = [
+    # flake8
+    "A", "ARG", "B", "BLE", "C4", "PIE", "RET", "SIM", "S",
+    "F",  # pyflakes
+    "N",  # pep8-nameing
+    "PL", # pylint
+    "E",  # error
+    "W",  # warning
+    "PTH", # pathlib
+    "RUF", # ruff
+]
